@@ -1,0 +1,35 @@
+{
+  "trial_id": "trial_20260127_163814",
+  "timestamp": "2026-01-27T16:38:14.385009",
+  "system_parameters": {
+    "version": "3.1.0",
+    "stm_max": 10,
+    "summary_threshold": 5,
+    "archive_threshold": 5,
+    "timestamp": "2026-01-27T16:38:14.385009"
+  },
+  "results": {
+    "stm_buffering": {
+      "status": "PASS",
+      "details": "Buffered 3 messages correctly."
+    },
+    "ltm_consolidation": {
+      "status": "FAIL",
+      "details": "STM cleared but no chunks found in LTM."
+    },
+    "duplicate_detection": {
+      "status": "FAIL",
+      "details": "No duplicates detected despite near-identical facts."
+    },
+    "conflict_resolution": {
+      "status": "PASS",
+      "details": "Conflicts resolved via AI. Operations: 0"
+    },
+    "semantic_integrity": {
+      "status": "INFO",
+      "details": "Knowledge base categorized into: "
+    }
+  },
+  "overall_status": "FAIL",
+  "duration_seconds": 0.21
+}

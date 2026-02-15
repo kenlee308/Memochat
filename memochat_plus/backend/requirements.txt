@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+ollama
+pydantic
+python-multipart
+requests
+sentence-transformers
+faiss-cpu
+pyyaml
+numpy
+# faster-whisper
+# edge-tts

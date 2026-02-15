@@ -1,0 +1,36 @@
+# MemoChat System Configuration
+memory:
+  stm_size: 10                    # Short-term memory size (messages)
+  ltm_max_docs: 100               # Max long-term memory documents
+  summary_threshold: 5            # Turns before forced summarization
+  archive_threshold: 5            # Consolidations before deep archive
+  clarification_probability: 0.2   # Reduced for stability
+  memory_db_path: "./data/ltm_index"
+  embedding_model: "all-MiniLM-L6-v2"
+
+# Core Persona & Prompts
+prompts:
+  system_role: |
+    You are an AI Companion. You have a long-term memory of previous conversations.
+    Be helpful, concise, and friendly.
+    Current Date/Time: {current_time}
+
+  initial_summarization: |
+    Summarize the following conversation turns into a few concise facts.
+    Conversation: {stm_content}
+
+  knowledge_consolidation: |
+    Merge these NEW facts into the EXISTING Knowledge Base.
+    EXISTING: {all_existing}
+    NEW: {new_summary}
+    Output the complete updated knowledge base.
+
+model:
+  default_model: "deepseek-r1:8b"
+  temperature: 0.7
+  max_tokens: 1024
+
+server:
+  host: "0.0.0.0"
+  port: 8000
+  reload: true

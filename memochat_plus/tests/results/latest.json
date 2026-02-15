@@ -1,0 +1,29 @@
+{
+  "trial_id": "trial_20260127_194728",
+  "timestamp": "2026-01-27T19:47:28.272620",
+  "system_parameters": {
+    "stm_size": null,
+    "summary_threshold": 5,
+    "ltm_count": 0
+  },
+  "results": {
+    "stm_buffering": {
+      "status": "PASS",
+      "details": "Fact stored in STM."
+    },
+    "ltm_consolidation": {
+      "status": "PASS",
+      "details": "STM cleared after sleep."
+    },
+    "duplicate_detection": {
+      "status": "PASS",
+      "details": "Detected 1 conflicts."
+    },
+    "conflict_resolution": {
+      "status": "PASS",
+      "details": "Resolution call successful."
+    }
+  },
+  "overall_status": "PASS",
+  "duration_seconds": 47.95
+}

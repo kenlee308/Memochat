@@ -1,0 +1,29 @@
+{
+  "trial_id": "trial_20260127_164700",
+  "timestamp": "2026-01-27T16:47:00.814623",
+  "system_parameters": {
+    "stm_size": null,
+    "summary_threshold": 5,
+    "ltm_count": 1
+  },
+  "results": {
+    "stm_buffering": {
+      "status": "FAIL",
+      "details": "Fact sent but not found in memory response."
+    },
+    "ltm_consolidation": {
+      "status": "PASS",
+      "details": "STM cleared after sleep."
+    },
+    "duplicate_detection": {
+      "status": "FAIL",
+      "details": "No conflicts found for near-identical facts."
+    },
+    "conflict_resolution": {
+      "status": "PASS",
+      "details": "Resolution call successful."
+    }
+  },
+  "overall_status": "FAIL",
+  "duration_seconds": 61.88
+}

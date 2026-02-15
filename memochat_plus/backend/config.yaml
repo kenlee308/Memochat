@@ -1,0 +1,100 @@
+# MemoChat System Configuration
+memory:
+  stm_size: 10                    # Short-term memory size (messages)
+  summary_threshold: 5            # Turns before forced summarization
+  archive_threshold: 5            # Consolidations before deep archive
+  memory_db_path: "./data/ltm_index"
+  embedding_model: "all-MiniLM-L6-v2"
+  
+  # Fact Consistency Validation (v3.1)
+  validation:
+    # Toggle semantic similarity duplicate detection
+    enable_similarity_check: true
+    
+    # Similarity threshold (0.0-1.0). Higher = stricter duplicate detection
+    similarity_threshold: 0.85
+    
+    # Toggle context-aware consolidation
+    enable_context_aware_consolidation: true
+    
+    # Number of similar chunks to show AI during consolidation
+    consolidation_context_size: 10
+    
+    # Log level for validation warnings (DEBUG, INFO, WARNING)
+    validation_log_level: "WARNING"
+
+# Core Persona & Prompts
+prompts:
+  system_role: |
+    You are a Personal Neural Agent. Your memory is organized as a structured database.
+    
+    KNOWLEDGE USAGE:
+    - You will be provided with a section called [RELEVANT LONG-TERM KNOWLEDGE].
+    - ALWAYS prioritize this information when answering questions about the user's preferences, history, or identity.
+    - If the context is missing but required, rely on the conversation history (Short-Term Memory).
+    
+    PERSONALITY:
+    - Respond with short, vocal, conversational answers.
+    - DO NOT ask questions unless:
+      1. You are genuinely confused by user input.
+      2. You are asking a "Neural Audit" question to resolve a memory conflict.
+      3. You are making a proactive recommendation.
+
+  initial_summarization: |
+    Summarize the following conversation turns into a few concise facts.
+    Conversation: {stm_content}
+
+  knowledge_consolidation: |
+    Merge these NEW facts into the EXISTING Knowledge Base.
+    EXISTING: {all_existing}
+    NEW: {new_summary}
+    Output the complete updated knowledge base.
+
+  # v3.0 Chunk-based consolidation for incremental updates
+  chunk_consolidation: |
+    You are updating a CHUNKED knowledge base. Each chunk is a discrete fact.
+    
+    EXISTING RELEVANT CHUNKS:
+    {chunks_list}
+    
+    NEW INFORMATION TO INTEGRATE:
+    {new_summary}
+    
+    CRITICAL RULES FOR CONSISTENCY:
+    1. **Check for contradictions**: If NEW info contradicts an EXISTING chunk, use UPDATE to correct it.
+    2. **Avoid duplicates**: If NEW info is already captured in an EXISTING chunk, skip it or UPDATE to enhance detail.
+    3. **Prefer UPDATE over DELETE+ADD**: When fixing outdated info, UPDATE the existing chunk.
+    4. **One fact per chunk**: Keep chunks atomic and focused.
+    
+    OUTPUT CHUNK OPERATIONS using EXACTLY this format:
+    
+    [ADD category="preferences"]
+    User enjoys hiking on weekends
+    [/ADD]
+    
+    [UPDATE chunk_id="chunk_abc123"]
+    Updated content for this chunk
+    [/UPDATE]
+    
+    [DELETE chunk_id="chunk_xyz789"]
+    
+    CATEGORIES: preferences, facts, schedule, relationships, general
+
+  deep_archive: |
+    Distill the following long-term memory into the most essential, permanent facts.
+    Remove transient information and keep only what defines the user long-term.
+    
+    MEMORY TO DISTILL:
+    {ltm_content}
+    
+    Output a concise summary of permanent knowledge.
+
+model:
+  default_model: "deepseek-r1:7b"
+  temperature: 0.7
+  max_tokens: 1024
+
+server:
+  host: "0.0.0.0"
+  port: 8000
+  reload: true

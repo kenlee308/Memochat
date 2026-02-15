@@ -1,0 +1,19 @@
+# Memochat & Memochat Plus
+**Type:** Full-Stack Web Application (React + Python/FastAPI)
+**Description:**
+Memochat is a sophisticated, locally-hosted AI assistant focused on long-term memory and identity persistence. It uses a hybrid memory stack to store and retrieve user details, facts, and conversation history, ensuring the AI "remembers" you over time.
+
+**Key Features:**
+- **Hybrid Memory:** Combines vector search (FAISS) with structured categorization for deep recall.
+- **Consistency Audit:** "Neural Core Resolution" checks for and resolves conflicting memories.
+- **Local Privacy:** All data and inference (Ollama) happen locally.
+- **Visual Memory Panel:** See what the AI remembers about you in real-time.
+
+**How to Use:**
+1.  **Start System:** Run `start_all.bat`. This will launch the backend (FastAPI) and frontend (Vite).
+2.  **Access UI:** The application will open in a browser window / interactive console.
+3.  **Chat:** Interact with the bot. It will automatically save important details to its memory.
+4.  **Manage Memory:** Use the side panel to view, edit, or delete memory chunks.
+5.  **Diagnostics:** Run `run_system_check.bat` if you encounter issues.
+
+**Note:** The folder contains both `memochat` (likely v3) and `memochat_plus` (v3.1 with enhanced audit features). Use the startup scripts inside the respective folders.

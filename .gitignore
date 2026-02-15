@@ -1,0 +1,12 @@
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.log
+*.zip
+data/
+memory_snapshots/
+backend_debug.log
+backend_test.log
+.setup_done
