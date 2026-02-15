@@ -5,7 +5,10 @@ __pycache__/
 venv/
 *.log
 *.zip
+backup/
 data/
+.env
+.env.*
 memory_snapshots/
 backend_debug.log
 backend_test.log
