@@ -11,6 +11,8 @@ Memochat is a privacy-focused, locally-hosted AI assistant emphasizing long-term
 - **Local Privacy:** All processing via Ollama ensures data stays offline, ideal for workforce training without cloud risks.  
 - **Visual Memory Panel:** Real-time insights into AI "memories," enhancing educational transparency.  
 
+https://www.youtube.com/watch?v=OUh7HCdpnI4&t=2s
+
 **How to Use:**  
 1. Start System: Run `start_all.bat` to launch backend (FastAPI) and frontend (Vite).  
 2. Access UI: Interact via browser or console.  
